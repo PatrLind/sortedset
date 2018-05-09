@@ -25,6 +25,7 @@
 package sortedset
 
 import (
+	"math"
 	"math/rand"
 )
 
@@ -283,7 +284,7 @@ type GetByScoreRangeOptions struct {
 func (this *SortedSet) GetByScoreRange(start SCORE, end SCORE, options *GetByScoreRangeOptions) []*SortedSetNode {
 
 	// prepare parameters
-	var limit int = 2147483648
+	var limit int = math.MaxInt32
 	if options != nil && options.Limit > 0 {
 		limit = options.Limit
 	}
